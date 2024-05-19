@@ -21,11 +21,7 @@ public class ProductCommandController {
 
   @PostMapping
   public String createProduct(@Valid @RequestBody CreateProductRestModel createProductRestModel) {
-    try {
       log.info("[PRINT] inside controller of create product -> {}", createProductRestModel);
       return commandGateway.sendAndWait(productCommandMapper.mapToCreateProductCommand(createProductRestModel));
-    } catch (Exception e) {
-      return e.getLocalizedMessage();
-    }
   }
 }

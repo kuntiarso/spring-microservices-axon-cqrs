@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.messaging.interceptors.ExceptionHandler;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,5 +25,11 @@ public class ProductLookupEventsHandler {
     ProductLookupEntity productLookupEntity = productCommandMapper.mapToProductLookupEntity(productCreatedEvent);
     log.info("[PRINT] inside event handler of create lookup product -> {}", productLookupEntity);
     productLookupRepository.save(productLookupEntity);
+  }
+
+  @ExceptionHandler
+  public void handleException(Exception exception) throws Exception {
+    log.error("[FAILURE] inside product lookup events handler -> {}", exception.getMessage());
+    throw exception;
   }
 }
