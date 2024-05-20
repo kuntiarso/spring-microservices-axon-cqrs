@@ -9,8 +9,8 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized
 @SuperBuilder
 public class CreateProductRestModel {
-  @NotBlank(message = "product name is a required field")
+  @NotBlank(message = "product name cannot be empty")
   String name;
-  @NotBlank(message = "product description is a required field")
+  @NotBlank(message = "product description cannot be empty")
   String description;
 }

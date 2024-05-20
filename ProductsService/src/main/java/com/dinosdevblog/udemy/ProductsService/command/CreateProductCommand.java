@@ -1,9 +1,9 @@
 package com.dinosdevblog.udemy.ProductsService.command;
 
-import lombok.Data;
+import lombok.Value;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-@Data
+@Value
 public class CreateProductCommand {
   @TargetAggregateIdentifier
   String id;

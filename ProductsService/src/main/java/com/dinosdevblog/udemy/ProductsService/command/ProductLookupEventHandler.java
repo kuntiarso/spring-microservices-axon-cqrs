@@ -1,7 +1,6 @@
 package com.dinosdevblog.udemy.ProductsService.command;
 
 import com.dinosdevblog.udemy.ProductsService.command.mapper.ProductCommandMapper;
-import com.dinosdevblog.udemy.ProductsService.core.data.ProductEntity;
 import com.dinosdevblog.udemy.ProductsService.core.data.ProductLookupEntity;
 import com.dinosdevblog.udemy.ProductsService.core.data.ProductLookupRepository;
 import com.dinosdevblog.udemy.ProductsService.core.events.ProductCreatedEvent;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 @ProcessingGroup(value = "product-events-group")
 @RequiredArgsConstructor
 @Slf4j
-public class ProductLookupEventsHandler {
+public class ProductLookupEventHandler {
   private final ProductLookupRepository productLookupRepository;
   private final ProductCommandMapper productCommandMapper;
 

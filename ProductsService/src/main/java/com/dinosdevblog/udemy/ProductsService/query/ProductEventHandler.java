@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @ProcessingGroup(value = "product-events-group")
 @RequiredArgsConstructor
 @Slf4j
-public class ProductEventsHandler {
+public class ProductEventHandler {
   private final ProductRepository productRepository;
   private final ProductCommandMapper productCommandMapper;
 

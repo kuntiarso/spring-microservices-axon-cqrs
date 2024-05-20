@@ -19,7 +19,7 @@ public class ProductQueryHandler {
   @QueryHandler
   public List<ProductRestModel> findProducts(FindProductQuery findProductQuery) {
     List<ProductRestModel> products = productQueryMapper.mapToProductRestModelList(productRepository.findAll());
-    log.info("[PRINT] inside query handler of find products -> {}", products);
+    log.info("[SUCCESS] inside query handler of find products");
     return products;
   }
 }
