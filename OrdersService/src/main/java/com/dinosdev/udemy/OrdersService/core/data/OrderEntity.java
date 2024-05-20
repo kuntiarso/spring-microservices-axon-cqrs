@@ -7,12 +7,15 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.io.Serial;
+import java.io.Serializable;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "orders")
-public class OrderEntity {
+public class OrderEntity implements Serializable {
+  @Serial
   private static final long serialVersionUID = -3218765828621165577L;
 
   @Id @Column(unique = true, nullable = false)
