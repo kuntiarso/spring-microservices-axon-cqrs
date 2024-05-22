@@ -12,7 +12,6 @@ import org.mapstruct.MappingConstants.ComponentModel;
 @Mapper(componentModel = ComponentModel.SPRING)
 public interface OrderCommandMapper {
   @Mapping(target = "id", expression = MapperUtil.GENERATED_UUID)
-  @Mapping(target = "userId", defaultValue = "27b95829-4f3f-4ddf-8983-151ba010e35b")
   CreateOrderCommand mapToCreateOrderCommand(CreateOrderRestModel createOrderRestModel);
   OrderCreatedEvent mapToOrderCreatedEvent(CreateOrderCommand createOrderCommand);
   OrderEntity mapToOrderEntity(OrderCreatedEvent orderCreatedEvent);

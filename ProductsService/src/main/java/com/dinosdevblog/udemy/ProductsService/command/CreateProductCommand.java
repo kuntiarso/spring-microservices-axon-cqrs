@@ -1,5 +1,6 @@
 package com.dinosdevblog.udemy.ProductsService.command;
 
+import java.math.BigDecimal;
 import lombok.Value;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
@@ -9,4 +10,6 @@ public class CreateProductCommand {
   String id;
   String name;
   String description;
+  int quantity;
+  BigDecimal price;
 }

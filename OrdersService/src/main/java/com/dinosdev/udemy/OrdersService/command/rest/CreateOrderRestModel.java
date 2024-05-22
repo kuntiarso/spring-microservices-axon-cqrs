@@ -14,6 +14,6 @@ public class CreateOrderRestModel {
   String productId;
   @NotBlank(message = "address id cannot be empty")
   String addressId;
-  @Min(value = 1, message = "Order quantity cannot be lower than 1")
+  @Min(value = 1, message = "order quantity cannot be lower than 1")
   Integer quantity;
 }

@@ -1,9 +1,11 @@
 package com.dinosdevblog.udemy.ProductsService.query;
 
+import com.dinosdev.udemy.CoreService.event.ProductReservedEvent;
 import com.dinosdevblog.udemy.ProductsService.command.mapper.ProductCommandMapper;
 import com.dinosdevblog.udemy.ProductsService.core.data.ProductEntity;
 import com.dinosdevblog.udemy.ProductsService.core.data.ProductRepository;
 import com.dinosdevblog.udemy.ProductsService.core.events.ProductCreatedEvent;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
@@ -22,7 +24,15 @@ public class ProductEventHandler {
   @EventHandler
   public void on(ProductCreatedEvent productCreatedEvent) {
     ProductEntity productEntity = productCommandMapper.mapToProductEntity(productCreatedEvent);
-    log.info("[PRINT] inside event handler of create product -> {}", productEntity);
+    log.info("[PRINT] handle create product -> {}", productEntity);
+    productRepository.save(productEntity);
+  }
+
+  @EventHandler
+  public void on(ProductReservedEvent productReservedEvent) {
+    ProductEntity productEntity = productRepository.findById(productReservedEvent.getProductId()).orElseThrow();
+    productEntity.setQuantity(productEntity.getQuantity() - productReservedEvent.getQuantity());
+    log.info("[PRINT] handle update product stock to {}", productEntity.getQuantity());
     productRepository.save(productEntity);
   }
 

@@ -1,5 +1,7 @@
 package com.dinosdevblog.udemy.ProductsService.command.mapper;
 
+import com.dinosdev.udemy.CoreService.command.ReserveProductCommand;
+import com.dinosdev.udemy.CoreService.event.ProductReservedEvent;
 import com.dinosdevblog.udemy.ProductsService.command.CreateProductCommand;
 import com.dinosdevblog.udemy.ProductsService.command.rest.CreateProductRestModel;
 import com.dinosdevblog.udemy.ProductsService.core.data.ProductEntity;
@@ -17,4 +19,5 @@ public interface ProductCommandMapper {
   ProductCreatedEvent mapToProductCreatedEvent(CreateProductCommand createProductCommand);
   ProductEntity mapToProductEntity(ProductCreatedEvent productCreatedEvent);
   ProductLookupEntity mapToProductLookupEntity(ProductCreatedEvent productCreatedEvent);
+  ProductReservedEvent mapToProductReservedEvent(ReserveProductCommand reserveProductCommand);
 }
